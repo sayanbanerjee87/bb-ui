@@ -1,9 +1,6 @@
 .transaction-list-container {
 
-    position: absolute;
-    top: 15%;
-    width: 52%;
-    right: 5%;
+    @include entity-position;
 
     & .p-orderlist {
 

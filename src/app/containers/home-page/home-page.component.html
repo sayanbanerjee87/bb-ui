@@ -1,3 +1,16 @@
-<div class="app-background">
-    <app-data-list [transactionList]="transactionList"></app-data-list>
+<div class="app-background" fxLayout="row" fxLayoutAlign.sm="column">
+    <!-- Spacer element-->
+    <div fxFlex.md="4" fxFlex.lg="8" fxHide.sm></div>
+    <!-- Transaction form-->
+    <div fxFlex.md="30" fxFlex.lg="25" fxFlex.sm="100">
+        <app-transaction-form></app-transaction-form>
+    </div>
+    <!-- Spacer element-->
+    <div fxFlex.md="2" fxFlex.lg="4" fxHide.sm></div>
+    <!-- Transaction list-->
+    <div fxFlex.md="60" fxFlex.lg="60" fxFlex.sm="100">
+        <app-data-list [transactionList]="transactionList"></app-data-list>
+    </div>
+    <!-- Spacer element-->
+    <div fxFlex.md="4" fxFlex.lg="8" fxHide.sm></div>
 </div>

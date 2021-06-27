@@ -18,6 +18,7 @@ import { SubmitButtonComponent } from './components/submit-button/submit-button.
 import { TransactionItemComponent } from './components/transaction-item/transaction-item.component';
 import { HomePageComponent } from './containers/home-page/home-page.component';
 import { DataListComponent } from './components/data-list/data-list.component';
+import { TransactionFormComponent } from './components/transaction-form/transaction-form.component';
 
 /** Services */
 import { TransactionService } from './services/transaction.service';
@@ -31,6 +32,7 @@ const COMPONENTS = [
   FilterComponent,
   DataListComponent,
   TransactionItemComponent,
+  TransactionFormComponent,
   HomePageComponent,
   DatePipe
 ];

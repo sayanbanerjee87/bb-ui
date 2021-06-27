@@ -9,7 +9,7 @@ export class DatePipe implements PipeTransform {
     
     const date = new Date(value);
     const dateToStr = date.toUTCString().split(' ');
-    const cleanDate = dateToStr[2] + ' ' + dateToStr[1] ;
+    const cleanDate = dateToStr[2] + '. ' + dateToStr[1] ;
 
     return cleanDate;
   }

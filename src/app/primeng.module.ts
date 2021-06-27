@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
-import { OrderList, OrderListModule } from 'primeng/orderlist';
+import { OrderListModule } from 'primeng/orderlist';
+import { PanelModule } from 'primeng/panel';
 import { ToolbarModule } from 'primeng/toolbar';
 
 @NgModule({
@@ -13,6 +14,7 @@ import { ToolbarModule } from 'primeng/toolbar';
         DialogModule,
         InputTextModule,
         OrderListModule,
+        PanelModule,
         ToolbarModule
     ]
 
