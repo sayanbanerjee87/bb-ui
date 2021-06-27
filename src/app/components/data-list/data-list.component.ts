@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { TransactionObjectModel } from 'src/app/models/transactions.model';
 
 @Component({
@@ -6,7 +6,7 @@ import { TransactionObjectModel } from 'src/app/models/transactions.model';
   templateUrl: './data-list.component.html',
   styleUrls: ['./data-list.component.scss']
 })
-export class DataListComponent implements OnInit {
+export class DataListComponent {
 
   /**
    * List of transactions
@@ -14,8 +14,5 @@ export class DataListComponent implements OnInit {
   @Input() transactionList: any;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }
