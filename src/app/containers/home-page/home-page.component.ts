@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, of, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+
+/** import models */
+import { TransactionResponseModel, TransactionObjectModel } from '../../models/transactions.model';
+
+/** import services */
+import { TransactionService } from '../../services/transaction.service';
 
 @Component({
   selector: 'app-home-page',
@@ -7,9 +15,54 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  /**
+   * Transaction response observable
+   * @ignore
+  */
+  public transactionList: TransactionObjectModel[];
 
+  /**
+   * 
+   * @param api service instance
+   */
+  constructor(private api: TransactionService) { 
+
+    this.transactionList = new Array<TransactionObjectModel>();
+
+  }
+
+  /**
+   * Init method for container
+   */
   ngOnInit(): void {
+
+    const apiData = this.api.getTransactionData().pipe(
+                                map((res: any) => {
+
+                                  if(!res && !res.data && !res.data.length ) {
+
+                                    throw new Error("Empty response received");
+
+                                  }
+
+                                  return res.data;
+
+                                }),
+                                catchError(() => of([]))
+    );
+
+    apiData.subscribe((data: TransactionObjectModel[]) => { 
+        
+        this.transactionList = data;
+
+      },
+      () => { 
+        
+        console.log('Service error encountered'); 
+      
+      }
+    );
+
   }
 
 }

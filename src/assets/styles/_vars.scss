@@ -1,3 +1,12 @@
+@import './base/colors/colors';
+
+// Font size
+$small_font: .75rem;
+$semi_regular_font: .815rem;
+
+// Font weight
+$normal_weight: 500;
+$bold_weight: 600;
 
 // spacing
 $small-spacing: 5px;
@@ -5,4 +14,11 @@ $medium-spacing: 10px;
 $large-spacing: 20px;
 
 // colors
-$primary-blue: #00a1e0;
+$primary_blue: $primary__color;
+$toolbar_background: $white__color;
+$color_success: $color__success;
+$color_danger: $color__danger;
+$light_color: $color__light;
+
+// path
+$assetPath :"/assets/images";

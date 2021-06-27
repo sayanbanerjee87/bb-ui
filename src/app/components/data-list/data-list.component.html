@@ -1,0 +1,23 @@
+<div class="transaction-list-container">
+    <p-orderList [value]="transactionList" header="Transactions list" filterBy="merchant.name, transactionList.type" filterPlaceholder="Filter by name" [dragdrop]="false">
+        <ng-template let-txn pTemplate="item">
+            <app-transaction-item>
+                    <section data-test-hook="transactionColor" fxFlex.gt-sm="5" fxHide.sm fxFide.lt-sm>
+                        <span></span>
+                    </section >
+                    <section class="small-font" data-test-hook="transactionDate" fxFlex.sm="20" fxFlex.md="20" fxFlex.gt-md="20">
+                        <span>{{txn?.dates?.valueDate | Date: 'MMM-DD' }}</span>
+                    </section>
+                    <section data-test-hook="transactionMerchantName">
+                        {{txn?.merchant?.name}}
+                    </section>
+                    <section data-test-hook="transactionType" class="small-font text-color-light">
+                        {{txn?.transaction?.type}}
+                    </section>
+                    <section data-test-hook="transactionAmount" fxFlex.sm="20" fxFlex.md="15" fxFlex.gt-md="15" [ngClass]="{'text-color-success': txn?.transaction?.creditDebitIndicator === 'CRDT', 'text-color-danger': txn?.transaction?.creditDebitIndicator ===  'DBIT'}">
+                        {{txn?.transaction?.amountCurrency?.currencyCode}} {{txn?.transaction?.creditDebitIndicator === 'DBIT' ? '-' : ''}} {{txn?.transaction?.amountCurrency?.amount}} 
+                    </section>
+            </app-transaction-item>
+        </ng-template>
+    </p-orderList>
+</div>

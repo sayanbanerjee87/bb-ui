@@ -1,0 +1,14 @@
+.p-toolbar {
+
+    background: $toolbar_background;
+    border: none;
+
+    & .p-toolbar-group-left {
+
+        & img {
+
+            width: 12.5rem;
+            height: 1.5rem;
+        }
+    }
+}

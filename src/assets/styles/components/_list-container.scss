@@ -1,0 +1,24 @@
+.transaction-list-container {
+
+    position: absolute;
+    top: 15%;
+    width: 52%;
+    right: 5%;
+
+    & .p-orderlist {
+
+        & .p-orderlist-controls {
+
+            display: none;
+
+        }
+
+        & .p-orderlist-list {
+
+            min-height: 330px;
+            max-height: 430px;
+
+        }
+    }
+
+}
