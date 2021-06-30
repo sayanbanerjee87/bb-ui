@@ -1,5 +1,18 @@
 .transaction-form-container {
 
     @include entity-position;
+
+    & .transaction-form {
+
+        div {
+
+           & input {
+
+                width: 100%;
+                
+           }
+
+        }
+    }
     
 }

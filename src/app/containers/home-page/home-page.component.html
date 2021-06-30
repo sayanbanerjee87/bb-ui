@@ -3,7 +3,7 @@
     <div fxFlex.md="4" fxFlex.lg="8" fxHide.sm></div>
     <!-- Transaction form-->
     <div fxFlex.md="30" fxFlex.lg="25" fxFlex.sm="100">
-        <app-transaction-form></app-transaction-form>
+        <app-transaction-form (submitForReview)="submitPayload($event)"></app-transaction-form>
     </div>
     <!-- Spacer element-->
     <div fxFlex.md="2" fxFlex.lg="4" fxHide.sm></div>
@@ -14,3 +14,6 @@
     <!-- Spacer element-->
     <div fxFlex.md="4" fxFlex.lg="8" fxHide.sm></div>
 </div>
+<ng-container *ngIf="reviewPayload">
+    <app-review-modal></app-review-modal>
+</ng-container>

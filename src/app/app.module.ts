@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { PrimeNgModule } from './primeng.module';
 import { LayoutModule } from './flexLayout.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 /** Import Pipes */
 import { DatePipe } from './pipes/date.pipe';
@@ -19,6 +20,7 @@ import { TransactionItemComponent } from './components/transaction-item/transact
 import { HomePageComponent } from './containers/home-page/home-page.component';
 import { DataListComponent } from './components/data-list/data-list.component';
 import { TransactionFormComponent } from './components/transaction-form/transaction-form.component';
+import { ReviewModalComponent } from './components/review-modal/review-modal.component';
 
 /** Services */
 import { TransactionService } from './services/transaction.service';
@@ -34,7 +36,8 @@ const COMPONENTS = [
   TransactionItemComponent,
   TransactionFormComponent,
   HomePageComponent,
-  DatePipe
+  DatePipe,
+  ReviewModalComponent
 ];
 @NgModule({
   declarations: COMPONENTS,
@@ -43,6 +46,7 @@ const COMPONENTS = [
     BrowserAnimationsModule,
     AppRoutingModule,
     LayoutModule,
+    ReactiveFormsModule,
     PrimeNgModule,
     HttpClientModule
   ],

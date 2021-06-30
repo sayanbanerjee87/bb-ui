@@ -3,7 +3,8 @@ import { Observable, of, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 /** import models */
-import { TransactionResponseModel, TransactionObjectModel } from '../../models/transactions.model';
+import { TransactionObjectModel } from '../../models/transactions.model';
+import { TransactionFormPayload } from '../../models/form.model';
 
 /** import services */
 import { TransactionService } from '../../services/transaction.service';
@@ -22,12 +23,20 @@ export class HomePageComponent implements OnInit {
   public transactionList: TransactionObjectModel[];
 
   /**
+   * Review payload
+   * @ignore
+   */
+  public reviewPayload: TransactionFormPayload | null;
+
+  /**
    * 
    * @param api service instance
    */
   constructor(private api: TransactionService) { 
 
     this.transactionList = new Array<TransactionObjectModel>();
+
+    this.reviewPayload = null; 
 
   }
 
@@ -62,6 +71,12 @@ export class HomePageComponent implements OnInit {
       
       }
     );
+
+  }
+
+  submitPayload(event: TransactionFormPayload) {
+    
+    this.reviewPayload = event;
 
   }
 

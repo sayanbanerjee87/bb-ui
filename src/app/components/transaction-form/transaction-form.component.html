@@ -5,9 +5,23 @@
         </button>
     </ng-template>
     <p-panel header="Make Transfer">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <form [formGroup]="transactionForm" class="transaction-form">
+            <div class="p-field">
+                <h5>From Account</h5>
+                <input id="fromAccount" formControlName="fromAccount" type="text" pInputText>         
+            </div>
+            <div class="p-field">
+                <h5>To Account</h5>
+                <input id="toAccount" formControlName="toAccount" type="text" pInputText placeholder="type an account name">         
+            </div>
+            <h5>Amount</h5>
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                <input formControlName="amount" type="text" pInputText placeholder="Amount">         
+            </div>
+            <div class="action-button-container">
+                <app-submit-button (submitForm)="submitForm($event)"></app-submit-button>
+            </div>
+        </form>
     </p-panel>
 </section>
