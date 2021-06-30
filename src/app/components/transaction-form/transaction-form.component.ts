@@ -24,9 +24,14 @@ export class TransactionFormComponent {
 
   }
 
-  submitForm(event: TransactionFormPayload) {
+  submitForm(event: Event) {
 
-    this.submitForReview.emit(event);
+    const transactionPayload: TransactionFormPayload = {
+      amount: this.transactionForm.controls["amount"].value,
+      toAccount: this.transactionForm.controls["toAccount"].value
+    }
+    
+    this.submitForReview.emit(transactionPayload);
     
   }
 
