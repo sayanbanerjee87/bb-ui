@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-review-modal',
   templateUrl: './review-modal.component.html',
   styleUrls: ['./review-modal.component.scss']
 })
-export class ReviewModalComponent implements OnInit {
+export class ReviewModalComponent {
 
   displayModal: boolean;
 
@@ -13,9 +13,6 @@ export class ReviewModalComponent implements OnInit {
 
     this.displayModal = true;
 
-  }
-
-  ngOnInit(): void {
   }
 
 }
