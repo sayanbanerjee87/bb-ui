@@ -14,6 +14,7 @@
     <!-- Spacer element-->
     <div fxFlex.md="4" fxFlex.lg="8" fxHide.sm></div>
 </div>
-<ng-container *ngIf="reviewPayload">
-    <app-review-modal></app-review-modal>
-</ng-container>
+<!-- Review modal -->
+<div class="modal container" *ngIf="reviewPayload">
+    <app-review-modal [transaction]="reviewPayload" [displayModal]="true" (submitTransfer)="sendTransfer()"></app-review-modal>
+</div>

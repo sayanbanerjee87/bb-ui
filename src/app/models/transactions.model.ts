@@ -2,12 +2,12 @@ interface DateModel {
     valueDate: Number;
 }
 
-interface AmountCurrencyModel {
+export interface AmountCurrencyModel {
     amount: Number;
-    currency: string;
+    currencyCode: string;
 }
 
-interface MerchantModel {
+export interface MerchantModel {
     name: string;
     accountNumber: string;
 }
@@ -22,7 +22,7 @@ export interface TransactionModel {
 export interface TransactionObjectModel {
     categoryCode: string;
     dates: DateModel;
-    transaction: TransactionObjectModel;
+    transaction: TransactionModel;
 }
 
 export interface TransactionResponseModel {
