@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
@@ -13,7 +13,8 @@ import { TransactionService } from '../../services/transaction.service';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.scss']
+  styleUrls: ['./home-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomePageComponent implements OnInit {
 
@@ -39,7 +40,8 @@ export class HomePageComponent implements OnInit {
    * 
    * @param api service instance
    */
-  constructor(private api: TransactionService) 
+  constructor(private api: TransactionService,
+              private cdr: ChangeDetectorRef) 
   { 
 
     this.transactionList = new Array<TransactionObjectModel>();
@@ -74,10 +76,12 @@ export class HomePageComponent implements OnInit {
         
         this.transactionList = data;
 
+        this.cdr.markForCheck();
+
       },
-      () => { 
+      (error: any) => { 
         
-        console.log('Service error encountered'); 
+        console.log('Service error encountered' + error); 
       
       }
     );
@@ -116,7 +120,7 @@ export class HomePageComponent implements OnInit {
     let transaction: TransactionModel  = {
       "amountCurrency": amountCurrency,
       "type": "Salaries",
-      "creditDebitIndicator": "CRDT",
+      "creditDebitIndicator": "DBIT",
       "merchant": merchantModel
     };
     
@@ -128,8 +132,13 @@ export class HomePageComponent implements OnInit {
       "transaction": transaction
     }
 
-    this.transactionList.push(transferData);
+    this.transactionList = [...this.transactionList, transferData];
 
+    this.cdr.markForCheck();
+
+    this.reviewPayload = null;
+
+    this.displayModal = false;
 
   }
 

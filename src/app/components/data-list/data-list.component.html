@@ -15,7 +15,7 @@
                         {{txn?.transaction?.type}}
                     </section>
                     <section class="small-font text-right" data-test-hook="transactionAmount" fxFlex.sm="20" fxFlex.md="15" fxFlex.gt-md="15" [ngClass]="{'text-color-success': txn?.transaction?.creditDebitIndicator === 'CRDT', 'text-color-danger': txn?.transaction?.creditDebitIndicator ===  'DBIT'}">
-                        {{txn?.transaction?.amountCurrency?.currencyCode}} {{txn?.transaction?.creditDebitIndicator === 'DBIT' ? '-' : ''}} {{txn?.transaction?.amountCurrency?.amount}} 
+                        <i class="pi pi-euro"></i> {{txn?.transaction?.creditDebitIndicator === 'DBIT' ? '-' : ''}} {{txn?.transaction?.amountCurrency?.amount}} 
                     </section>
             </app-transaction-item>
         </ng-template>

@@ -1,20 +1,20 @@
 <div class="review-modal">
-    <p-dialog header="Review transfer" [(visible)]="displayModal" [modal]="true" [style]="{width: '30vw'}" [baseZIndex]="10000"
+    <p-dialog header="Review transfer" [(visible)]="displayModal" [modal]="true" [style]="{width: '30vw'}" [baseZIndex]="100"
     [draggable]="false" [resizable]="false">
         <div>
             <p> Are you ready to send out this transfer?</p>
         </div>
         <div>
             <h5> It will be send out to account</h5>
-            <span> {{transaction.amount}}</span>
+            <span> {{transaction.toAccount}}</span>
         </div>
         <div>
             <h5> With the amount of </h5>
-            <span> {{transaction.toAccount}} </span>
+            <span> {{transaction.amount}} </span>
         </div>
         <ng-template pTemplate="footer">
-            <p-button icon="pi pi-check" (click)="displayModal=false" label="Close" class="p-button-text"></p-button>
-            <p-button icon="pi pi-times" (click)="moneyTransfer($event)" label="Send transfer"></p-button>
+            <p-button icon="pi pi-times" (click)="displayModal=false" label="Close" class="p-button-text"></p-button>
+            <p-button icon="pi pi-check" (click)="moneyTransfer($event)" label="Send transfer"></p-button>
         </ng-template>
     </p-dialog>
 </div>
