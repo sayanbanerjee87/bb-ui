@@ -1,5 +1,5 @@
 <div class="review-modal">
-    <p-dialog header="Review transfer" [(visible)]="displayModal" [modal]="true" [style]="{width: '30vw'}" [baseZIndex]="100"
+    <p-dialog header="Review transfer" [(visible)]="displayModal" [modal]="true" fxFlex.lg="30" fxFlex.md="40" fxFlex.sm="70" fxFlex.lt-sm="80" [baseZIndex]="100"
     [draggable]="false" [resizable]="false">
         <div>
             <p> Are you ready to send out this transfer?</p>
@@ -13,8 +13,8 @@
             <span> {{transaction.amount}} </span>
         </div>
         <ng-template pTemplate="footer">
-            <p-button icon="pi pi-times" (click)="displayModal=false" label="Close" class="p-button-text"></p-button>
-            <p-button icon="pi pi-check" (click)="moneyTransfer($event)" label="Send transfer"></p-button>
+            <p-button  (click)="closeModal()" label="Close" class="btn btn-secondary p-button-text"></p-button>
+            <p-button  (click)="moneyTransfer($event)" label="Send transfer" class="btn btn-primary"></p-button>
         </ng-template>
     </p-dialog>
 </div>

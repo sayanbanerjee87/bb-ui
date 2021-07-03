@@ -2,6 +2,6 @@
   class="btn btn-primary js-trigger-form"
   (click)="triggerSubmit($event)"
   data-test-hook="submitButton"
-  type="submit">
+  type="submit" [disabled]="disabled">
   Submit
 </p-button>

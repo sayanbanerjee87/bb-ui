@@ -9,6 +9,7 @@ import { TransactionFormPayload } from '../../models/form.model';
 
 /** import services */
 import { TransactionService } from '../../services/transaction.service';
+import { DataObserverService } from '../../services/data-observer.service';
 
 @Component({
   selector: 'app-home-page',
@@ -37,14 +38,23 @@ export class HomePageComponent implements OnInit {
   public displayModal: boolean;
 
   /**
+   * Personal account balance
+   */
+  public accountBalance: number;
+  /**
    * 
+   * @param cdr Change detection reference
    * @param api service instance
    */
   constructor(private api: TransactionService,
-              private cdr: ChangeDetectorRef) 
+              private cdr: ChangeDetectorRef,
+              private data: DataObserverService
+            ) 
   { 
 
     this.transactionList = new Array<TransactionObjectModel>();
+
+    this.accountBalance = 5824.76;
 
     this.reviewPayload = null; 
 
@@ -56,6 +66,8 @@ export class HomePageComponent implements OnInit {
    * Init method for container
    */
   ngOnInit(): void {
+
+    this.data.sendMessage(this.accountBalance);
 
     const apiData = this.api.getTransactionData().pipe(
                                 map((res: any) => {
@@ -76,6 +88,12 @@ export class HomePageComponent implements OnInit {
         
         this.transactionList = data;
 
+        this.transactionList.sort((elem: any, elem1: any) => {
+          
+          return elem1.dates.valueDate - elem.dates.valueDate;
+
+        });
+
         this.cdr.markForCheck();
 
       },
@@ -89,14 +107,23 @@ export class HomePageComponent implements OnInit {
   }
 
   /**
+   * CLose modal
+   */
+  public modalClose() {
+
+    this.reviewPayload = null;
+
+    this.cdr.markForCheck();
+
+  }
+
+  /**
    * Submit form for review
    * @param event Transaction payload
    */
   submitPayload(event: TransactionFormPayload) {
     
     this.reviewPayload = event;
-
-    this.displayModal = true;
 
   }
 
@@ -114,14 +141,13 @@ export class HomePageComponent implements OnInit {
 
     let merchantModel: MerchantModel = {
       name: this.reviewPayload && this.reviewPayload.toAccount ? this.reviewPayload.toAccount : '',
-      accountNumber: "1234567"
+      accountNumber: "013218901231"
     };
 
     let transaction: TransactionModel  = {
       "amountCurrency": amountCurrency,
-      "type": "Salaries",
-      "creditDebitIndicator": "DBIT",
-      "merchant": merchantModel
+      "type": "Online transfer",
+      "creditDebitIndicator": "DBIT"
     };
     
     let transferData: TransactionObjectModel = {
@@ -129,16 +155,25 @@ export class HomePageComponent implements OnInit {
       "dates": {
         "valueDate": valueDate
       },
-      "transaction": transaction
+      "transaction": transaction,
+      "merchant": merchantModel
     }
+
+    this.accountBalance = this.accountBalance - Number(amountCurrency.amount);
 
     this.transactionList = [...this.transactionList, transferData];
 
-    this.cdr.markForCheck();
+    this.transactionList.sort((elem: any, elem1: any) => {
+          
+      return elem1.dates.valueDate - elem.dates.valueDate;
+
+    });
 
     this.reviewPayload = null;
 
-    this.displayModal = false;
+    this.cdr.markForCheck();
+
+    this.data.sendMessage(this.accountBalance);
 
   }
 

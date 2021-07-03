@@ -52,3 +52,53 @@
     text-align: right;
     
 }
+
+// Icons
+
+i {
+
+    &.pi::before {
+
+        font-size: $small-font;
+
+    }
+}
+
+
+// Buttons
+
+.btn {
+
+    &.btn-primary {
+
+        & .p-button {
+
+            background-color: $btn_action_primary;
+
+        }
+
+    }
+
+    &.btn-secondary {
+
+        & .p-button {
+
+            background-color: $btn_action_secondary;
+            color: $light_color;
+
+        }
+
+    }
+
+}
+
+// Element states
+
+.alert {
+
+    &.alert-danger {
+
+        color: $alert_danger;
+
+    }
+}

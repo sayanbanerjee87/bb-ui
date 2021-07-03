@@ -5,7 +5,7 @@
         </button>
     </ng-template>
     <p-panel header="Make Transfer">
-        <form [formGroup]="transactionForm" class="transaction-form">
+        <form [formGroup]="transactionForm" class="transaction-form" #tForm="ngForm">
             <div class="p-field">
                 <h5>From Account</h5>
                 <input id="fromAccount" formControlName="fromAccount" type="text" pInputText>         
@@ -14,13 +14,21 @@
                 <h5>To Account</h5>
                 <input id="toAccount" formControlName="toAccount" type="text" pInputText placeholder="type an account name">         
             </div>
+            <div class="alert alert-danger">
+                <div *ngIf="!toAccount?.valid && (toAccount?.dirty || toAccount?.touched)">
+                    To account is required
+                </div>
+            </div>
             <h5>Amount</h5>
             <div class="p-inputgroup">
                 <span class="p-inputgroup-addon"><i class="pi pi-euro"></i></span>
-                <input formControlName="amount" type="text" pInputText placeholder="Amount">         
+                <input formControlName="amount" type="number" appAmountCheckValidator [accountBalance]="accountBalance"  pInputText placeholder="Amount">         
+            </div>
+            <div *ngIf="amount?.invalid && amount?.errors?.numericValueCheck === 'failed'" class="alert alert-danger">
+                <span> Insufficient fund</span>
             </div>
             <div class="action-button-container">
-                <app-submit-button (submitForm)="submitForm($event)"></app-submit-button>
+                <app-submit-button (submitForm)="submitForm()" [disabled]="!transactionForm.valid"></app-submit-button>
             </div>
         </form>
     </p-panel>

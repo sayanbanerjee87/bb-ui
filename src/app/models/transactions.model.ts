@@ -16,13 +16,13 @@ export interface TransactionModel {
     amountCurrency: AmountCurrencyModel;
     type: string;
     creditDebitIndicator: string;
-    merchant: MerchantModel;
 }
 
 export interface TransactionObjectModel {
     categoryCode: string;
     dates: DateModel;
     transaction: TransactionModel;
+    merchant: MerchantModel;
 }
 
 export interface TransactionResponseModel {

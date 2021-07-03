@@ -24,10 +24,16 @@ import { ReviewModalComponent } from './components/review-modal/review-modal.com
 
 /** Services */
 import { TransactionService } from './services/transaction.service';
+import { DataObserverService } from './services/data-observer.service';
+
+/** Directives */
+import { AmountCheckValidatorDirective } from './directives/amount-check-validator.directive';
+
 
 
 const COMPONENTS = [
   AppComponent,
+  AmountCheckValidatorDirective,
   FooterComponent,
   LogoComponent,
   SubmitButtonComponent,
@@ -52,7 +58,8 @@ const COMPONENTS = [
   ],
   exports: COMPONENTS,
   providers: [
-    TransactionService
+    TransactionService,
+    DataObserverService
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

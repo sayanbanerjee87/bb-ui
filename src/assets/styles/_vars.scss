@@ -17,9 +17,17 @@ $large-spacing: 20px;
 $primary_blue: $primary__color;
 $toolbar_background: $white__color;
 $color_success: $color__success;
-$color_danger: $color__danger;
+$color_danger: $color__warning;
 $light_color: $color__light;
 $disabled_color: $disabled__color;
+
+// Button colors
+
+$btn_action_primary: $button__primary;
+$btn_action_secondary: $white__color;
+
+// Alerts
+$alert_danger: $alert__danger;
 
 // path
 $assetPath :"/assets/images";

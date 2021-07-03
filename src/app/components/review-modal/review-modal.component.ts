@@ -22,6 +22,14 @@ export class ReviewModalComponent {
    */
   @Output() submitTransfer: EventEmitter<any> = new EventEmitter<any>();
 
+  /**
+   * Destroy modal component
+   */
+  @Output() modalClose: EventEmitter<Event> = new EventEmitter<Event>();
+
+  /**
+   * Component constructor
+   */
   constructor() {
 
     this.displayModal = true;
@@ -31,6 +39,15 @@ export class ReviewModalComponent {
       "toAccount": ""
     }
 
+  }
+
+  /**
+   * CLose modal component
+   */
+  closeModal() {
+
+    this.modalClose.emit();
+    
   }
 
   /**

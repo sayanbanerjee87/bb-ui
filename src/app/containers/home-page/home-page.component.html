@@ -1,14 +1,14 @@
-<div class="app-background" fxLayout="row" fxLayout.sm="column">
+<div class="app-background" fxLayout="row" fxLayout.sm="column" fxLayout.lt-sm="column">
     <!-- Spacer element-->
     <div fxFlex.md="4" fxFlex.lg="8" fxHide.sm></div>
     <!-- Transaction form-->
-    <div fxFlex.md="30" fxFlex.lg="25" fxFlex.sm="100">
-        <app-transaction-form (submitForReview)="submitPayload($event)"></app-transaction-form>
+    <div fxFlex.md="30" fxFlex.lg="25" fxFlex.lt-md="100">
+        <app-transaction-form [accountBalance]="accountBalance" (submitForReview)="submitPayload($event)"></app-transaction-form>
     </div>
     <!-- Spacer element-->
     <div fxFlex.md="2" fxFlex.lg="4" fxHide.sm></div>
     <!-- Transaction list-->
-    <div fxFlex.md="60" fxFlex.lg="60" fxFlex.sm="100">
+    <div fxFlex.md="60" fxFlex.lg="60" fxFlex.lt-md="100">
         <app-data-list [transactionList]="transactionList"></app-data-list>
     </div>
     <!-- Spacer element-->
@@ -16,5 +16,5 @@
 </div>
 <!-- Review modal -->
 <div class="modal container" *ngIf="reviewPayload">
-    <app-review-modal [transaction]="reviewPayload" [displayModal]="true" (submitTransfer)="sendTransfer()"></app-review-modal>
+    <app-review-modal [transaction]="reviewPayload" [displayModal]="true" (modalClose)="modalClose()" (submitTransfer)="sendTransfer()"></app-review-modal>
 </div>
