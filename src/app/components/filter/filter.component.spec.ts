@@ -27,7 +27,7 @@ describe('FilterComponent', () => {
     spyOn(component.inputChange, 'emit');
     const event = new InputEvent('change');
 
-    component.onInputChange(event);
+    component.onInputChange();
     expect(component.inputChange.emit).toHaveBeenCalled();
   });
 });

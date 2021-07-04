@@ -22,4 +22,20 @@ describe('ReviewModalComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should trigger event', () => {
+    spyOn(component.submitTransfer, 'emit');
+    const event = new Event('transfer');
+
+    component.moneyTransfer(event);
+    expect(component.submitTransfer.emit).toHaveBeenCalled();
+  });
+
+  it('Should close modal', () => {
+    spyOn(component.modalClose, 'emit');
+    const event = new Event('close');
+
+    component.closeModal();
+    expect(component.modalClose.emit).toHaveBeenCalled();
+  })
 });
